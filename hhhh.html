@@ -1,0 +1,123 @@
+<!-- Big Daddy Is M2H Bap to Bap Hota Hai -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoryPatcher @M2H_SRC</title>
+    <link rel="icon" href= "./m2h.png" type="image/x-icon"> 
+    <style>
+        body { /*Coded by TG:@m2hgamerz;*/
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            color: #333; 
+        }
+        form {
+            margin-bottom: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            background-color: #fff; 
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+        }
+        input[type="text"],
+        textarea {
+            width: calc(100% - 0px); 
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 10px; 
+            background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+        }
+        input[type="button"] {
+            background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            margin-top: 50px;
+            text-align: center;
+            background: -webkit-linear-gradient(#30cfd0 0%, #330867 100%);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent ;
+        }
+        .telegram-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            
+        }
+
+        body{
+        	background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        }
+
+        .form{
+        	border-radius: 10px;
+        	background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+        }
+        .text{
+        	border-radius: 30px;
+        }
+        .action{
+        	width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CODER - @m2hgamerz</h1>
+    <form id="memoryPatcherForm" class="form">
+        <label for="dosyaAdi"><b>Lib Name:</b></label>
+        <input type="text" id="dosyaAdi" name="dosyaAdi" placeholder="libNAME.so" class="text" required>
+        <label for="hexDeger"><b>Hex:</b></label>
+        <input type="text" id="hexDeger" name="hexDeger" placeholder="00 20 70 47" required>
+        <label for="degerler"><b>Offsets:</b></label>
+        <textarea id="degerler" name="degerler" rows="5" placeholder="0x1234567
+0x1234567
+0x1234567
+0x1234567
+0x1234567
+" required>
+</textarea>
+      <b>  <input type="button" value="Convert-In-Bypass" onclick="createPatches()" class="action"></b>
+    </form>
+    <a href="https://t.me/M2H_SRC" target="_blank" class="telegram-button">
+        <button style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); color: white; padding: 15px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;"><b>Telegram</b></button>
+    </a>
+
+    <script>
+        function createPatches() {
+            var libAdi = document.getElementById("dosyaAdi").value;
+            var hexDeger = document.getElementById("hexDeger").value;
+            var offsetler = document.getElementById("degerler").value.trim().split('\n');
+
+            var patches = offsetler.map(function(offset) {
+                return 'MemoryPatch::createWithHex("' + libAdi + '",' + offset + ',"' + hexDeger + '").Modify();';
+            });
+
+            var patchText = patches.join('\n');
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(patchText));
+            element.setAttribute('download', '@m2hgamerz.cpp');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+
+
+</body>
+</html>

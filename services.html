@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M2HGamerz || Personal website</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- boxicon css link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="overlay"></div>
+    <header>
+        <a href="#" class="logo"><span>M</span>2HGamerz</a>
+        <ul class="navlist">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="right-header">
+            <a href="#" class="btn">Let's chat <i class='bx bx-message-dots' ></i></a>
+            <div class="menu-icon">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <br><br><br>
+
+    <!-- The sidebar -->
+<div class="sidebar">
+  <a class="active" href="https://m2hgamer.github.io/memory-patcher-m2h-tool/">Bypass Converter</a>
+  <a href="https://m2hgamer.github.io/memory-patcher-m2h-tool/">Tool-2</a>
+  <a href="https://m2hgamer.github.io/memory-patcher-m2h-tool/">Tool-3</a>
+  <a href="https://m2hgamer.github.io/memory-patcher-m2h-tool/">Tool-4</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+<h1 class="tool-1">CODER - @m2hgamerz</h1>
+    <form id="memoryPatcherForm" class="form">
+        <label for="dosyaAdi"><b>Lib Name:</b></label>
+        <input type="text" id="dosyaAdi" name="dosyaAdi" placeholder="libNAME.so" class="text" required>
+        <label for="hexDeger"><b>Hex:</b></label>
+        <input type="text" id="hexDeger" name="hexDeger" placeholder="00 20 70 47" required>
+        <label for="degerler"><b>Offsets:</b></label>
+        <textarea id="degerler" name="degerler" rows="5" placeholder="0x1234567
+0x1234567
+0x1234567
+0x1234567
+0x1234567
+" required>
+</textarea>
+      <b>  <input type="button" value="Convert-In-Bypass" onclick="createPatches()" class="action"></b>
+    </form>
+    <a href="https://t.me/M2H_SRC" target="_blank" class="telegram-button">
+        <button style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); color: white; padding: 15px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px;"><b>Telegram</b></button>
+    </a>
+
+    <script>
+        function createPatches() {
+            var libAdi = document.getElementById("dosyaAdi").value;
+            var hexDeger = document.getElementById("hexDeger").value;
+            var offsetler = document.getElementById("degerler").value.trim().split('\n');
+
+            var patches = offsetler.map(function(offset) {
+                return 'MemoryPatch::createWithHex("' + libAdi + '",' + offset + ',"' + hexDeger + '").Modify();';
+            });
+
+            var patchText = patches.join('\n');
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(patchText));
+            element.setAttribute('download', '@m2hgamerz.cpp');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</div>
+
+    <!-- <div class="services-card-1">
+        <img src="services-card-1.png" height="100%" width="100%">
+        <a href="https://m2hgamer.github.io/memory-patcher-m2h-tool/"><span style="text-align: center; font-size: 25px; margin-left: 130px;"><b>Offset To Bypass Converter</b></span></a>
+    </div>
+
+    <div class="services-card-2">
+        <img src="services-card-1.png" height="100%" width="100%">
+        <a href="https://m2hgamer.github.io/memory-patcher-m2h-tool/"><span style="text-align: center; font-size: 25px; margin-left: 130px;"><b>Offset To Bypass Converter</b></span></a>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ -->
+
+<!--     <div class="social-media">
+                <div class="bg-icon">
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <span></span>
+                </div>
+
+                <div class="bg-icon">
+                    <a href="#"><i class='bx bxl-github'></i></a>
+                    <span></span>
+                </div>
+
+                <div class="bg-icon">
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <span></span>
+                </div>
+
+                <div class="bg-icon">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <span></span>
+                </div>
+            </div> -->
+
+</body>
+</html>
